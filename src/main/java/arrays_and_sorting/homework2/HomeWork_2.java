@@ -1,4 +1,4 @@
-package arrays_and_sorting;
+package arrays_and_sorting.homework2;
 
 import java.util.Arrays;
 import java.util.Random;

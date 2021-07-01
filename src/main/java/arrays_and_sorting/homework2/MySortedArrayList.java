@@ -1,4 +1,4 @@
-package arrays_and_sorting;
+package arrays_and_sorting.homework2;
 
 public class MySortedArrayList<E extends Comparable<E>> extends MyArrayList<E> {
 
