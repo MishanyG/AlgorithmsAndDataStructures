@@ -27,7 +27,7 @@ public class MyQueue<T> {
 
     public void insert(T item) {
         if (isFull()) {
-            throw new RuntimeException("queue is full");
+            reCapacity(size + (size/2 + 1));
         }
         size++;
         list[end] = item;
@@ -50,7 +50,10 @@ public class MyQueue<T> {
     }
 
     private int nextIndex(int index) {
-        return (index + 1) % list.length;
+        if(!isFull())
+            return (index + 1) % list.length;
+        else
+            return ++index;
     }
 
     public boolean isFull() {
@@ -63,6 +66,23 @@ public class MyQueue<T> {
 
     public int size() {
         return size;
+    }
+
+    private void reCapacity(int newCapacity) {
+        T[] tempArr = (T[]) new Object[newCapacity];
+        if (size > 0)
+            if (begin < end)
+                System.arraycopy(list, begin, tempArr, 0, size);
+            else {
+                System.arraycopy(list, begin, tempArr, 0, list.length - begin);
+                System.arraycopy(list, 0, tempArr, list.length - begin, end);
+            }
+        list = tempArr;
+        begin = 0;
+        if (size == newCapacity)
+            end = 0;
+        else
+            end = size;
     }
 
     @Override
