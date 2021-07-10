@@ -1,5 +1,7 @@
 package arrays_and_sorting.homework4;
 
+import java.util.Iterator;
+
 public class Main {
     public static void main(String[] args) {
         MyLinkedList<Integer> mll = new MyLinkedList<>();
@@ -40,14 +42,14 @@ public class Main {
 //            System.out.println(queue.remove());
 //        }
 
-//        Iterator<Integer> iterator = mll.iterator();
-//        while (iterator.hasNext()){
-//            System.out.println(iterator.next());
-//        }
+        Iterator <Integer> iterator = mll.iterator();
+        while (iterator.hasNext()){
+            System.out.println(iterator.next().toString());
+        }
 
-//        for (Integer x : mll) {
-//            System.out.println(x);
-//        }
+        for (Integer x : mll) {
+            System.out.println(x.toString());
+        }
 
 
 //        List<Integer> list = new ArrayList<>(Arrays.asList(2, 4, 5, 3, 2, 4, 5, 6, 3, 2, 6, 5, 43, 23));
