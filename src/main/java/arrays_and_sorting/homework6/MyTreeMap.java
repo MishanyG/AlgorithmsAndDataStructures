@@ -11,11 +11,13 @@ public class MyTreeMap<K extends Comparable<K>, V> {
         Node left;
         Node right;
         int size;
+        int height;
 
         public Node(K key, V value) {
             this.key = key;
             this.value = value;
             size = 1;
+            height = 0;
         }
     }
 
@@ -28,6 +30,29 @@ public class MyTreeMap<K extends Comparable<K>, V> {
             return 0;
         }
         return node.size;
+    }
+
+    public int height() {
+        return height(root);
+    }
+
+    private int height(Node node) {
+        if(node == null)
+            return -1;
+        node.height = 1 + Math.max(height(node.left), height(node.right));
+        return node.height;
+    }
+
+    public boolean isBalanced() {
+        return isBalanced(root);
+    }
+
+    private boolean isBalanced(Node node) {
+        if(node == null)
+            return true;
+        int leftH = height(node.left);
+        int rightH = height(node.right);
+        return Math.abs(leftH - rightH) <= 1 && isBalanced(node.left) && isBalanced(node.right);
     }
 
     public boolean isEmpty() {
