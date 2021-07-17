@@ -3,49 +3,30 @@ package arrays_and_sorting.homework7;
 import java.util.LinkedList;
 
 public class BreadthFirstPath {
-    private boolean[] marked;
-    private int[] edgeTo;
-    private int source;
+    public PathTo path = new PathTo();
 
     public BreadthFirstPath(Graph g, int source) {
-        this.source = source;
-        marked = new boolean[g.getVertexCount()];
-        edgeTo = new int[g.getVertexCount()];
+        path.source = source;
+        path.marked = new boolean[g.getVertexCount()];
+        path.edgeTo = new int[g.getVertexCount()];
         bfs(g, source);
     }
 
     private void bfs(Graph g, int source) {
-        LinkedList <Integer> queue = new LinkedList<>();
+        LinkedList<Integer> queue = new LinkedList<>();
         queue.add(source);
-        marked[source] = true;
+        path.marked[source] = true;
 
         while (!queue.isEmpty()){
             int vertex = queue.removeFirst();
             for (int w : g.getAdjList(vertex)) {
-                if(!marked[w]){
-                    marked[w] = true;
-                    edgeTo[w] = vertex;
+                if(!path.marked[w]){
+                    path.marked[w] = true;
+                    path.edgeTo[w] = vertex;
+                    System.out.println(vertex + " -> " + w);
                     queue.addLast(w);
                 }
             }
         }
-    }
-
-
-    public boolean hasPathTo(int v) {
-        return marked[v];
-    }
-
-    public LinkedList<Integer> pathTo(int v) {
-        if (!hasPathTo(v)) {
-            return null;
-        }
-        LinkedList<Integer> stack = new LinkedList<>();
-        int vertex = v;
-        while (vertex != source){
-            stack.push(vertex);
-            vertex = edgeTo[vertex];
-        }
-        return stack;
     }
 }
