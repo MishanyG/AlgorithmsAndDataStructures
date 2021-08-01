@@ -13,13 +13,22 @@ public class Main {
 //        System.out.println(x);
 //        System.out.println(Math.abs(x));
 
-//        ChainingHashMap<Integer, String> chm = new ChainingHashMap<>(16);
+        ChainingHashMap<Integer, String> chm = new ChainingHashMap<>(16);
 
-//        chm.put(1, "one");
-//        chm.put(222, "222e");
-//        chm.put(4545, "4545e");
+        chm.put(1, "one");
+        chm.put(222, "222e");
+        chm.put(4545, "4545e");
+        chm.put(45454, "4545b");
+        chm.put(454545, "4545c");
 
-//        System.out.println(chm.get(1));
+//        System.out.println(chm.get(222));
+        System.out.println(chm);
+        chm.delete(1);
+//        System.out.println(chm.get(222));
+        System.out.println(chm);
+        chm.put(1, "222e");
+//        System.out.println(chm.get(222));
+        System.out.println(chm);
 
 //        Random random = new Random();
 //
@@ -34,8 +43,10 @@ public class Main {
         lphm.put(1, "one");
         lphm.put(222, "222e");
         lphm.put(4545, "4545e");
-
-        System.out.println(lphm.get(222));
+        lphm.delete(4545);
+        System.out.println(lphm.get(4545));
+        lphm.put(4545, "222e");
+        System.out.println(lphm.get(4545));
 
     }
 }
